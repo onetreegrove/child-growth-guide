@@ -1,0 +1,8 @@
+{
+  "dataset_name": "0-3岁儿童生长发育及养育行为指导",
+  "version": "1.0.0",
+  "source_pdf": "0~3岁儿童生长发育及养育行为指导.pdf",
+  "source_pages": 20,
+  "generated_at": "2026-04-25",
+  "note": "由PDF文本抽取后结构化为SQLite seed SQL；stage_raw_text保留阶段原文，结构化表用于H5多维查询。"
+}

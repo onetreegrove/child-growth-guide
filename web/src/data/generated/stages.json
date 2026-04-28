@@ -1,0 +1,119 @@
+[
+  {
+    "id": "0_42d",
+    "name": "0-42天小婴儿",
+    "displayName": "0-42天",
+    "minDays": 0,
+    "maxDays": 42,
+    "sortOrder": 1,
+    "sourcePages": [
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "42d_3m",
+    "name": "42天-3个月婴儿",
+    "displayName": "42天-3个月",
+    "minDays": 42,
+    "maxDays": 90,
+    "sortOrder": 2,
+    "sourcePages": [
+      4,
+      5,
+      6
+    ]
+  },
+  {
+    "id": "4_6m",
+    "name": "4-6个月婴儿",
+    "displayName": "4-6个月",
+    "minDays": 91,
+    "maxDays": 180,
+    "sortOrder": 3,
+    "sourcePages": [
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "id": "7_9m",
+    "name": "7-9个月婴儿",
+    "displayName": "7-9个月",
+    "minDays": 181,
+    "maxDays": 270,
+    "sortOrder": 4,
+    "sourcePages": [
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  {
+    "id": "10_12m",
+    "name": "10-12个月婴儿",
+    "displayName": "10-12个月",
+    "minDays": 271,
+    "maxDays": 365,
+    "sortOrder": 5,
+    "sourcePages": [
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "id": "13_18m",
+    "name": "13-18个月幼儿",
+    "displayName": "13-18个月",
+    "minDays": 366,
+    "maxDays": 545,
+    "sortOrder": 6,
+    "sourcePages": [
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "id": "19_24m",
+    "name": "19-24个月幼儿",
+    "displayName": "19-24个月",
+    "minDays": 546,
+    "maxDays": 730,
+    "sortOrder": 7,
+    "sourcePages": [
+      15,
+      16,
+      17
+    ]
+  },
+  {
+    "id": "25_30m",
+    "name": "25-30个月幼儿",
+    "displayName": "25-30个月",
+    "minDays": 731,
+    "maxDays": 910,
+    "sortOrder": 8,
+    "sourcePages": [
+      17,
+      18
+    ]
+  },
+  {
+    "id": "31_36m",
+    "name": "31-36个月幼儿",
+    "displayName": "31-36个月",
+    "minDays": 911,
+    "maxDays": 1095,
+    "sortOrder": 9,
+    "sourcePages": [
+      18,
+      19,
+      20
+    ]
+  }
+]

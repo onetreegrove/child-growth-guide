@@ -1,0 +1,186 @@
+[
+  {
+    "stageId": "0_42d",
+    "ageLabel": "0月龄",
+    "vaccineName": "乙肝疫苗",
+    "dose": "第一针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "0_42d",
+    "ageLabel": "0月龄",
+    "vaccineName": "卡介苗",
+    "dose": null,
+    "note": null,
+    "sortOrder": 2
+  },
+  {
+    "stageId": "0_42d",
+    "ageLabel": "出生时",
+    "vaccineName": "乙肝高效免疫球蛋白",
+    "dose": null,
+    "note": "母亲若有乙肝病毒感染，需要在出生时接种",
+    "sortOrder": 3
+  },
+  {
+    "stageId": "0_42d",
+    "ageLabel": "1月龄",
+    "vaccineName": "乙肝疫苗",
+    "dose": "第二针",
+    "note": null,
+    "sortOrder": 4
+  },
+  {
+    "stageId": "42d_3m",
+    "ageLabel": "2月龄",
+    "vaccineName": "脊髓灰质炎疫苗",
+    "dose": "第1针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "42d_3m",
+    "ageLabel": "3月龄",
+    "vaccineName": "脊髓灰质炎疫苗",
+    "dose": "第2针",
+    "note": null,
+    "sortOrder": 2
+  },
+  {
+    "stageId": "42d_3m",
+    "ageLabel": "3月龄",
+    "vaccineName": "百白破疫苗",
+    "dose": "第1针",
+    "note": null,
+    "sortOrder": 3
+  },
+  {
+    "stageId": "4_6m",
+    "ageLabel": "4月龄",
+    "vaccineName": "脊灰减毒活疫苗口服/脊髓灰质炎疫苗",
+    "dose": "第三针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "4_6m",
+    "ageLabel": "4月龄",
+    "vaccineName": "百白破疫苗",
+    "dose": "第二针",
+    "note": null,
+    "sortOrder": 2
+  },
+  {
+    "stageId": "4_6m",
+    "ageLabel": "5月龄",
+    "vaccineName": "百白破疫苗",
+    "dose": "第三针",
+    "note": null,
+    "sortOrder": 3
+  },
+  {
+    "stageId": "4_6m",
+    "ageLabel": "6月龄",
+    "vaccineName": "乙肝疫苗",
+    "dose": "第三针",
+    "note": null,
+    "sortOrder": 4
+  },
+  {
+    "stageId": "4_6m",
+    "ageLabel": "6月龄",
+    "vaccineName": "A群流脑多糖疫苗",
+    "dose": "第一针",
+    "note": null,
+    "sortOrder": 5
+  },
+  {
+    "stageId": "7_9m",
+    "ageLabel": "8月龄",
+    "vaccineName": "麻腮风疫苗",
+    "dose": "第一针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "7_9m",
+    "ageLabel": "8月龄",
+    "vaccineName": "乙脑减毒活疫苗/乙脑灭活疫苗",
+    "dose": "第一针",
+    "note": null,
+    "sortOrder": 2
+  },
+  {
+    "stageId": "7_9m",
+    "ageLabel": "9月龄",
+    "vaccineName": "A群流脑多糖疫苗",
+    "dose": "第二针",
+    "note": null,
+    "sortOrder": 3
+  },
+  {
+    "stageId": "10_12m",
+    "ageLabel": "10-12月龄",
+    "vaccineName": "暂无一类疫苗接种",
+    "dose": null,
+    "note": "若前期疫苗接种延迟，可顺延至10-12月龄补种；也可按需求和流行季节补充免疫。",
+    "sortOrder": 1
+  },
+  {
+    "stageId": "13_18m",
+    "ageLabel": "18月龄",
+    "vaccineName": "麻腮风疫苗",
+    "dose": "第二针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "13_18m",
+    "ageLabel": "18月龄",
+    "vaccineName": "百白破疫苗",
+    "dose": "第四针",
+    "note": null,
+    "sortOrder": 2
+  },
+  {
+    "stageId": "13_18m",
+    "ageLabel": "18月龄",
+    "vaccineName": "甲肝减毒活疫苗或甲肝灭活疫苗",
+    "dose": "2选1",
+    "note": "甲肝活疫苗仅需1针，甲肝灭活疫苗需接种第2针。",
+    "sortOrder": 3
+  },
+  {
+    "stageId": "19_24m",
+    "ageLabel": "24月龄",
+    "vaccineName": "乙脑减毒活疫苗或乙脑灭活疫苗",
+    "dose": "第2针/第3针",
+    "note": null,
+    "sortOrder": 1
+  },
+  {
+    "stageId": "19_24m",
+    "ageLabel": "24月龄",
+    "vaccineName": "甲肝灭活疫苗",
+    "dose": "第2针",
+    "note": "已接种甲肝减毒活疫苗者无需再接种甲肝灭活疫苗第2针。",
+    "sortOrder": 2
+  },
+  {
+    "stageId": "25_30m",
+    "ageLabel": "25-30月龄",
+    "vaccineName": "补充免疫",
+    "dose": null,
+    "note": "除国家免疫规划疫苗外，可根据家长需求、流行季节特点等进行补充免疫。",
+    "sortOrder": 1
+  },
+  {
+    "stageId": "31_36m",
+    "ageLabel": "36月龄",
+    "vaccineName": "A群C群流脑多糖疫苗",
+    "dose": null,
+    "note": null,
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "name": "child-growth-h5",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "vue-tsc -b",
+    "test": "vitest run",
+    "convert:data": "tsx scripts/convert-seed.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "pinia": "^3.0.2",
+    "vite": "^6.3.5",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.21",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2",
+    "vue-tsc": "^2.2.10"
+  }
+}

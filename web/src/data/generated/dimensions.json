@@ -1,0 +1,146 @@
+[
+  {
+    "dimensionKey": "weight",
+    "dimensionName": "体重",
+    "dimensionGroup": "growth",
+    "unit": "kg",
+    "sortOrder": 1,
+    "description": "各阶段男女儿童体重范围或增长速度"
+  },
+  {
+    "dimensionKey": "height",
+    "dimensionName": "身高",
+    "dimensionGroup": "growth",
+    "unit": "cm",
+    "sortOrder": 2,
+    "description": "各阶段男女儿童身高/身长范围或增长速度"
+  },
+  {
+    "dimensionKey": "head_circumference",
+    "dimensionName": "头围",
+    "dimensionGroup": "growth",
+    "unit": "cm",
+    "sortOrder": 3,
+    "description": "各阶段男女儿童头围范围或增长速度"
+  },
+  {
+    "dimensionKey": "sleep",
+    "dimensionName": "睡眠",
+    "dimensionGroup": "care",
+    "unit": null,
+    "sortOrder": 10,
+    "description": "各阶段睡眠时长、频率和睡眠行为建议"
+  },
+  {
+    "dimensionKey": "stool",
+    "dimensionName": "排便",
+    "dimensionGroup": "care",
+    "unit": null,
+    "sortOrder": 11,
+    "description": "各阶段排便频率和性状说明"
+  },
+  {
+    "dimensionKey": "milk_feeding",
+    "dimensionName": "乳类喂养",
+    "dimensionGroup": "nutrition",
+    "unit": null,
+    "sortOrder": 20,
+    "description": "母乳、配方奶及饮奶量建议"
+  },
+  {
+    "dimensionKey": "complementary_food",
+    "dimensionName": "辅食/主食添加",
+    "dimensionGroup": "nutrition",
+    "unit": null,
+    "sortOrder": 21,
+    "description": "辅食、主食和家庭食物添加建议"
+  },
+  {
+    "dimensionKey": "supplements",
+    "dimensionName": "营养剂添加",
+    "dimensionGroup": "nutrition",
+    "unit": null,
+    "sortOrder": 22,
+    "description": "维生素D、维生素A、铁剂等补充建议"
+  },
+  {
+    "dimensionKey": "vaccine",
+    "dimensionName": "疫苗接种",
+    "dimensionGroup": "medical",
+    "unit": null,
+    "sortOrder": 30,
+    "description": "各阶段疫苗接种安排"
+  },
+  {
+    "dimensionKey": "checkup",
+    "dimensionName": "体检",
+    "dimensionGroup": "medical",
+    "unit": null,
+    "sortOrder": 31,
+    "description": "各阶段儿童保健体检时间、目的和项目"
+  },
+  {
+    "dimensionKey": "common_issue",
+    "dimensionName": "常见问题",
+    "dimensionGroup": "medical",
+    "unit": null,
+    "sortOrder": 32,
+    "description": "各阶段常见养育或健康问题"
+  },
+  {
+    "dimensionKey": "warning_sign",
+    "dimensionName": "警示信号",
+    "dimensionGroup": "medical",
+    "unit": null,
+    "sortOrder": 33,
+    "description": "需要关注的发育警示信号"
+  },
+  {
+    "dimensionKey": "motor",
+    "dimensionName": "动作发展",
+    "dimensionGroup": "development",
+    "unit": null,
+    "sortOrder": 40,
+    "description": "粗大动作和精细动作发展表现"
+  },
+  {
+    "dimensionKey": "language",
+    "dimensionName": "语言发展",
+    "dimensionGroup": "development",
+    "unit": null,
+    "sortOrder": 41,
+    "description": "听说、发声、理解和表达能力"
+  },
+  {
+    "dimensionKey": "cognition",
+    "dimensionName": "认知发展",
+    "dimensionGroup": "development",
+    "unit": null,
+    "sortOrder": 42,
+    "description": "感知、探索、记忆、分类等认知表现"
+  },
+  {
+    "dimensionKey": "social_emotional",
+    "dimensionName": "情感与社会性",
+    "dimensionGroup": "development",
+    "unit": null,
+    "sortOrder": 43,
+    "description": "依恋、情绪表达、社交互动等表现"
+  },
+  {
+    "dimensionKey": "parenting",
+    "dimensionName": "养育指导",
+    "dimensionGroup": "parenting",
+    "unit": null,
+    "sortOrder": 50,
+    "description": "亲子互动、生活习惯、游戏和训练建议"
+  },
+  {
+    "dimensionKey": "activity",
+    "dimensionName": "推荐活动",
+    "dimensionGroup": "parenting",
+    "unit": null,
+    "sortOrder": 51,
+    "description": "适合当前阶段的活动建议"
+  }
+]

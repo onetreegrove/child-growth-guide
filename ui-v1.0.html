@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>0-3岁成长发育 H5 UI v1.0</title>
+  <style>
+    :root {
+      --bg: #f4f7f6;
+      --panel: #ffffff;
+      --panel-soft: #f7fbfa;
+      --line: #dde7e5;
+      --text: #172321;
+      --muted: #687875;
+      --subtle: #879591;
+      --brand: #0f8f85;
+      --brand-dark: #08766e;
+      --brand-soft: #e3f5f2;
+      --blue: #2879d8;
+      --red: #ec675f;
+      --amber: #d9851f;
+      --green-soft: #dff4ed;
+      --shadow: 0 18px 50px rgba(16, 38, 35, 0.12);
+      --phone-w: 390px;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(15, 143, 133, 0.08), transparent 34%),
+        linear-gradient(180deg, #fbfdfc 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .page {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 34px 28px 52px;
+    }
+
+    .doc-title {
+      margin: 0 0 6px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .doc-subtitle {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .section-title {
+      margin: 26px 0 16px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .phones {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(var(--phone-w), 1fr));
+      gap: 26px;
+      align-items: start;
+    }
+
+    .phones.compact {
+      grid-template-columns: repeat(3, minmax(var(--phone-w), 1fr));
+    }
+
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .phone {
+      width: var(--phone-w);
+      height: 844px;
+      overflow: hidden;
+      border: 1px solid rgba(21, 45, 42, 0.1);
+      border-radius: 36px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .screen {
+      height: 100%;
+      padding: 18px 18px 88px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fbfdfd 0%, #f4f8f7 100%);
+    }
+
+    .screen.scroll {
+      overflow-y: auto;
+    }
+
+    .caption {
+      width: var(--phone-w);
+      text-align: center;
+      color: #243734;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 24px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0e1715;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .signal,
+    .wifi,
+    .battery {
+      display: block;
+      height: 10px;
+      border: 2px solid #0e1715;
+    }
+
+    .signal {
+      width: 14px;
+      border-top: 0;
+      border-left: 0;
+      transform: skewX(-12deg);
+    }
+
+    .wifi {
+      width: 12px;
+      height: 12px;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 12px 0 0;
+      transform: rotate(45deg);
+    }
+
+    .battery {
+      width: 22px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: 2px;
+      width: 3px;
+      height: 4px;
+      border-radius: 0 2px 2px 0;
+      background: #0e1715;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .text-btn {
+      border: 0;
+      background: transparent;
+      color: var(--brand-dark);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .hero-card {
+      padding: 18px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, #0c9a8f 0%, #08766e 100%);
+      box-shadow: 0 16px 30px rgba(15, 143, 133, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 126px;
+      height: 126px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.13);
+      right: -42px;
+      top: -42px;
+    }
+
+    .baby-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #fff3e8;
+      border: 4px solid rgba(255, 255, 255, 0.78);
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+    }
+
+    .hero-eyebrow {
+      margin: 0 0 4px;
+      font-size: 13px;
+      opacity: 0.86;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 27px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .hero-sub {
+      margin: 7px 0 0;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-light {
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .metric-card {
+      min-height: 116px;
+      padding: 13px 11px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 8px 20px rgba(24, 42, 39, 0.06);
+    }
+
+    .metric-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 9px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--brand);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .metric-name {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .metric-value {
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight: 850;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .metric-value.female {
+      color: var(--red);
+    }
+
+    .unit {
+      font-size: 11px;
+      color: var(--subtle);
+      font-weight: 700;
+    }
+
+    .section-card {
+      margin-top: 14px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 8px 22px rgba(24, 42, 39, 0.055);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .small-muted {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .focus-item {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+    }
+
+    .bubble {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .focus-title {
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .focus-desc {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .arrow {
+      color: var(--subtle);
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .primary,
+    .secondary {
+      height: 44px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 850;
+      border: 1px solid var(--brand);
+    }
+
+    .primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      box-shadow: 0 10px 20px rgba(15, 143, 133, 0.22);
+    }
+
+    .secondary {
+      color: var(--brand-dark);
+      background: #fff;
+    }
+
+    .notice {
+      margin-top: 12px;
+      display: flex;
+      gap: 9px;
+      padding: 11px;
+      border-radius: var(--radius);
+      background: #edf8f6;
+      color: #3f6762;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-item {
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .nav-item.active {
+      color: var(--brand-dark);
+    }
+
+    .form-field {
+      margin-top: 13px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: #314541;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .input {
+      height: 46px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+      color: #233532;
+      font-size: 15px;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .seg {
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .seg.active {
+      border-color: var(--brand);
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .switch-row {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--panel-soft);
+    }
+
+    .switch {
+      width: 50px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--brand);
+      position: relative;
+    }
+
+    .switch::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .sticky-bottom {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 88px;
+    }
+
+    .stage-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .stage-row {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .stage-row.current {
+      border-color: var(--brand);
+      background: #edf8f6;
+      box-shadow: 0 8px 18px rgba(15, 143, 133, 0.1);
+    }
+
+    .stage-name {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .compare-head {
+      padding: 14px;
+      border-radius: 16px;
+      background: #f0f8f7;
+      border: 1px solid #d6e9e6;
+    }
+
+    .range-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .dimension-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .dimension-card {
+      min-height: 82px;
+      padding: 12px 8px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fff;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .dimension-card.active {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .dimension-emoji {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .dimension-name {
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .tab {
+      min-width: 70px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .tab.active {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .compare-table {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 82px 1fr 1fr;
+      min-height: 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .table-row:last-child {
+      border-bottom: 0;
+    }
+
+    .table-row.header {
+      min-height: 42px;
+      background: #f5f8f8;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .table-row.current {
+      background: #ebf8f6;
+      box-shadow: inset 4px 0 0 var(--brand);
+    }
+
+    .cell {
+      display: grid;
+      align-content: center;
+      padding: 8px 10px;
+      border-right: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .cell:last-child {
+      border-right: 0;
+    }
+
+    .stage-cell {
+      font-weight: 850;
+      color: #25413d;
+    }
+
+    .value-blue {
+      color: var(--blue);
+      font-weight: 850;
+    }
+
+    .value-red {
+      color: var(--red);
+      font-weight: 850;
+    }
+
+    .progress {
+      height: 6px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: #d9e6e4;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--brand);
+    }
+
+    .text-compare {
+      display: grid;
+      gap: 10px;
+    }
+
+    .text-stage {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .text-stage.current {
+      border-color: var(--brand);
+      background: #edf8f6;
+    }
+
+    .text-stage-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+
+    .source {
+      margin-top: 8px;
+      color: var(--subtle);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .detail-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    @media (max-width: 1760px) {
+      .phones,
+      .phones.compact {
+        grid-template-columns: repeat(3, minmax(var(--phone-w), 1fr));
+      }
+    }
+
+    @media (max-width: 1320px) {
+      .phones,
+      .phones.compact {
+        grid-template-columns: repeat(2, minmax(var(--phone-w), 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 20px 12px 36px;
+      }
+
+      .phones,
+      .phones.compact {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap,
+      .caption {
+        width: 100%;
+      }
+
+      .phone {
+        width: min(100%, var(--phone-w));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="doc-title">0-3岁成长发育 H5 UI v1.0</h1>
+    <p class="doc-subtitle">围绕“当前月龄自动匹配阶段”和“多维度跨阶段对比”的 MVP UI 稿。</p>
+
+    <h2 class="section-title">核心路径 A：自动匹配当前阶段</h2>
+    <section class="phones">
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <h1>0-3岁成长发育</h1>
+              <button class="text-btn">数据说明</button>
+            </div>
+
+            <section class="hero-card">
+              <div class="baby-row">
+                <div class="avatar">☺</div>
+                <div>
+                  <p class="hero-eyebrow">小树苗 · 10个月5天</p>
+                  <h2 class="hero-title">10-12个月</h2>
+                  <p class="hero-sub">当前匹配阶段，距离下一阶段约1个月25天</p>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <button class="pill-light">出生日期 2025-06-20</button>
+                <button class="pill-light">手动切换</button>
+              </div>
+            </section>
+
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-icon">kg</div>
+                <div class="metric-name">体重</div>
+                <div class="metric-value">7.7-11.5</div>
+                <div class="metric-value female">7.2-10.8</div>
+                <div class="unit">参考范围 kg</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-icon">cm</div>
+                <div class="metric-name">身高</div>
+                <div class="metric-value">68.3-77.8</div>
+                <div class="metric-value female">66.8-76.1</div>
+                <div class="unit">参考范围 cm</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-icon">◎</div>
+                <div class="metric-name">头围</div>
+                <div class="metric-value">42.7-47.7</div>
+                <div class="metric-value female">41.6-46.5</div>
+                <div class="unit">参考范围 cm</div>
+              </div>
+            </div>
+
+            <section class="section-card">
+              <div class="section-head">
+                <h3>今日重点</h3>
+                <span class="tag">当前阶段</span>
+              </div>
+              <div class="focus-list">
+                <div class="focus-item">
+                  <div class="bubble">🥣</div>
+                  <div>
+                    <div class="focus-title">辅食添加</div>
+                    <div class="focus-desc">逐步增加种类和数量，鼓励自主进食。</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+                <div class="focus-item">
+                  <div class="bubble">🌙</div>
+                  <div>
+                    <div class="focus-title">睡眠节律</div>
+                    <div class="focus-desc">参考 12-16 小时，白天约 2 次小睡。</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+                <div class="focus-item">
+                  <div class="bubble">🧸</div>
+                  <div>
+                    <div class="focus-title">动作发育</div>
+                    <div class="focus-desc">可练习扶站、扶物行走和精细抓握。</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+              </div>
+            </section>
+
+            <div class="action-row">
+              <button class="primary">查看阶段详情</button>
+              <button class="secondary">多维度对比</button>
+            </div>
+            <div class="notice"><strong>i</strong><span>本工具仅供育儿信息参考，不能替代专业医疗建议。</span></div>
+          </div>
+          <nav class="bottom-nav">
+            <div class="nav-item active"><span class="nav-icon">⌂</span><span>首页</span></div>
+            <div class="nav-item"><span class="nav-icon">▦</span><span>对比</span></div>
+            <div class="nav-item"><span class="nav-icon">☷</span><span>阶段</span></div>
+          </nav>
+        </div>
+        <div class="caption">1. 首页：自动匹配当前阶段</div>
+      </article>
+
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <h2>宝宝信息</h2>
+              <button class="text-btn">关闭</button>
+            </div>
+            <div class="section-card">
+              <div class="form-field">
+                <label>昵称（选填）</label>
+                <div class="input"><span>小树苗</span><span>›</span></div>
+              </div>
+              <div class="form-field">
+                <label>出生日期（必填）</label>
+                <div class="input"><span>2025-06-20</span><span>日历</span></div>
+              </div>
+              <div class="form-field">
+                <label>性别（用于指标展示）</label>
+                <div class="segmented">
+                  <div class="seg">全部</div>
+                  <div class="seg active">男孩</div>
+                  <div class="seg">女孩</div>
+                </div>
+              </div>
+              <div class="switch-row">
+                <div>
+                  <div class="focus-title">本地保存</div>
+                  <div class="focus-desc">仅保存在当前设备，下次访问自动匹配。</div>
+                </div>
+                <div class="switch"></div>
+              </div>
+            </div>
+            <div class="notice"><strong>i</strong><span>出生日期仅用于计算当前月龄阶段，可随时修改。</span></div>
+            <div class="sticky-bottom">
+              <button class="primary" style="width:100%">保存并匹配阶段</button>
+            </div>
+          </div>
+        </div>
+        <div class="caption">2. 宝宝信息：低成本完成阶段匹配</div>
+      </article>
+
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <button class="icon-btn">‹</button>
+              <h2>阶段</h2>
+              <button class="text-btn">修改</button>
+            </div>
+            <div class="compare-head">
+              <div class="focus-title">当前匹配：10-12个月</div>
+              <div class="focus-desc">小树苗 · 10个月5天。可手动切换查看其他阶段。</div>
+            </div>
+            <section class="section-card">
+              <div class="stage-list">
+                <div class="stage-row"><span class="stage-name">0-42天</span><span class="small-muted">新生儿期</span></div>
+                <div class="stage-row"><span class="stage-name">42天-3个月</span><span class="small-muted">早期婴儿</span></div>
+                <div class="stage-row"><span class="stage-name">4-6个月</span><span class="small-muted">翻身坐起</span></div>
+                <div class="stage-row"><span class="stage-name">7-9个月</span><span class="small-muted">爬行探索</span></div>
+                <div class="stage-row current"><span class="stage-name">10-12个月</span><span class="tag">当前宝宝</span></div>
+                <div class="stage-row"><span class="stage-name">13-18个月</span><span class="small-muted">站立行走</span></div>
+                <div class="stage-row"><span class="stage-name">19-24个月</span><span class="small-muted">语言增长</span></div>
+                <div class="stage-row"><span class="stage-name">25-30个月</span><span class="small-muted">精细动作</span></div>
+                <div class="stage-row"><span class="stage-name">31-36个月</span><span class="small-muted">社交表达</span></div>
+              </div>
+            </section>
+            <button class="primary" style="width:100%; margin-top:14px;">查看该阶段详情</button>
+          </div>
+          <nav class="bottom-nav">
+            <div class="nav-item"><span class="nav-icon">⌂</span><span>首页</span></div>
+            <div class="nav-item"><span class="nav-icon">▦</span><span>对比</span></div>
+            <div class="nav-item active"><span class="nav-icon">☷</span><span>阶段</span></div>
+          </nav>
+        </div>
+        <div class="caption">3. 阶段列表：手动修正自动匹配</div>
+      </article>
+
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <button class="icon-btn">‹</button>
+              <h2>10-12个月</h2>
+              <button class="text-btn">对比</button>
+            </div>
+            <section class="hero-card">
+              <div class="hero-eyebrow">小树苗 · 10个月5天</div>
+              <h2 class="hero-title">当前阶段详情</h2>
+              <p class="hero-sub">距离下一个阶段约1个月25天</p>
+            </section>
+            <section class="section-card">
+              <div class="section-head"><h3>生长指标</h3><button class="text-btn">与其他阶段对比</button></div>
+              <div class="metric-grid">
+                <div class="metric-card"><div class="metric-name">体重</div><div class="metric-value">7.7-11.5</div><div class="unit">kg 男孩</div></div>
+                <div class="metric-card"><div class="metric-name">身高</div><div class="metric-value">68.3-77.8</div><div class="unit">cm 男孩</div></div>
+                <div class="metric-card"><div class="metric-name">头围</div><div class="metric-value">42.7-47.7</div><div class="unit">cm 男孩</div></div>
+              </div>
+            </section>
+            <section class="section-card detail-group">
+              <div class="detail-row">
+                <div class="bubble">🥣</div>
+                <div><div class="focus-title">营养喂养</div><div class="focus-desc">辅食种类逐步增加，继续保持乳类摄入。</div></div>
+              </div>
+              <div class="detail-row">
+                <div class="bubble">🧸</div>
+                <div><div class="focus-title">发育表现</div><div class="focus-desc">可观察扶站、模仿动作、简单词语理解。</div></div>
+              </div>
+              <div class="detail-row">
+                <div class="bubble">＋</div>
+                <div><div class="focus-title">医疗保健</div><div class="focus-desc">按阶段关注体检和疫苗参考安排。</div></div>
+              </div>
+            </section>
+            <div class="notice"><strong>i</strong><span>个体差异较大，若有持续担忧，请咨询专业医生。</span></div>
+          </div>
+        </div>
+        <div class="caption">4. 阶段详情：承接自动匹配结果</div>
+      </article>
+    </section>
+
+    <h2 class="section-title">核心路径 B：多维度跨阶段对比</h2>
+    <section class="phones compact">
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <h2>多维对比</h2>
+              <button class="text-btn">筛选</button>
+            </div>
+            <div class="compare-head">
+              <div class="focus-title">当前宝宝：10个月5天</div>
+              <div class="focus-desc">当前阶段 10-12个月，默认对比相邻阶段。</div>
+              <div class="range-row">
+                <div class="seg active">相邻阶段</div>
+                <div class="seg">全部阶段</div>
+              </div>
+            </div>
+            <section class="section-card">
+              <div class="section-head"><h3>生长指标</h3><span class="small-muted">参考范围</span></div>
+              <div class="dimension-grid">
+                <div class="dimension-card active"><div class="dimension-emoji">⚖</div><div class="dimension-name">体重</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">↕</div><div class="dimension-name">身高</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">◎</div><div class="dimension-name">头围</div></div>
+              </div>
+            </section>
+            <section class="section-card">
+              <div class="section-head"><h3>日常照护</h3><span class="small-muted">建议类</span></div>
+              <div class="dimension-grid">
+                <div class="dimension-card"><div class="dimension-emoji">☾</div><div class="dimension-name">睡眠</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">🥣</div><div class="dimension-name">喂养</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">▥</div><div class="dimension-name">排便</div></div>
+              </div>
+            </section>
+            <section class="section-card">
+              <div class="section-head"><h3>发育表现</h3><span class="small-muted">阶段变化</span></div>
+              <div class="dimension-grid">
+                <div class="dimension-card"><div class="dimension-emoji">🧸</div><div class="dimension-name">动作</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">…</div><div class="dimension-name">语言</div></div>
+                <div class="dimension-card"><div class="dimension-emoji">◇</div><div class="dimension-name">认知</div></div>
+              </div>
+            </section>
+          </div>
+          <nav class="bottom-nav">
+            <div class="nav-item"><span class="nav-icon">⌂</span><span>首页</span></div>
+            <div class="nav-item active"><span class="nav-icon">▦</span><span>对比</span></div>
+            <div class="nav-item"><span class="nav-icon">☷</span><span>阶段</span></div>
+          </nav>
+        </div>
+        <div class="caption">5. 多维对比：首页选择维度</div>
+      </article>
+
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <button class="icon-btn">‹</button>
+              <h2>体重对比</h2>
+              <button class="text-btn">说明</button>
+            </div>
+            <div class="tabs">
+              <div class="tab active">体重</div>
+              <div class="tab">身高</div>
+              <div class="tab">头围</div>
+            </div>
+            <div class="segmented">
+              <div class="seg">全部</div>
+              <div class="seg active">男孩</div>
+              <div class="seg">女孩</div>
+            </div>
+            <div class="range-row" style="margin-bottom:12px;">
+              <div class="seg active">相邻阶段</div>
+              <div class="seg">全部阶段</div>
+            </div>
+            <div class="compare-table">
+              <div class="table-row header">
+                <div class="cell">阶段</div>
+                <div class="cell">男孩 kg</div>
+                <div class="cell">说明</div>
+              </div>
+              <div class="table-row">
+                <div class="cell stage-cell">4-6月</div>
+                <div class="cell"><span class="small-muted">仅增长速度</span><div class="progress"><span style="width:42%"></span></div></div>
+                <div class="cell small-muted">无具体范围</div>
+              </div>
+              <div class="table-row">
+                <div class="cell stage-cell">7-9月</div>
+                <div class="cell"><span class="small-muted">仅增长速度</span><div class="progress"><span style="width:55%"></span></div></div>
+                <div class="cell small-muted">可查趋势</div>
+              </div>
+              <div class="table-row current">
+                <div class="cell stage-cell">10-12月<br><span class="tag">当前</span></div>
+                <div class="cell"><span class="value-blue">7.7-11.5</span><div class="progress"><span style="width:78%"></span></div></div>
+                <div class="cell small-muted">来源页 11</div>
+              </div>
+              <div class="table-row">
+                <div class="cell stage-cell">13-18月</div>
+                <div class="cell"><span class="value-blue">8.6-12.6</span><div class="progress"><span style="width:84%"></span></div></div>
+                <div class="cell small-muted">来源页 14</div>
+              </div>
+              <div class="table-row">
+                <div class="cell stage-cell">19-24月</div>
+                <div class="cell"><span class="value-blue">9.7-14.1</span><div class="progress"><span style="width:90%"></span></div></div>
+                <div class="cell small-muted">来源页 16</div>
+              </div>
+            </div>
+            <div class="notice"><strong>★</strong><span>当前宝宝阶段已高亮。数值为参考范围，不代表诊断结论。</span></div>
+          </div>
+        </div>
+        <div class="caption">6. 生长指标对比：当前阶段高亮</div>
+      </article>
+
+      <article class="phone-wrap">
+        <div class="phone">
+          <div class="screen scroll">
+            <div class="status"><span>9:41</span><span class="icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span></div>
+            <div class="topbar">
+              <button class="icon-btn">‹</button>
+              <h2>睡眠对比</h2>
+              <button class="text-btn">说明</button>
+            </div>
+            <div class="tabs">
+              <div class="tab active">睡眠</div>
+              <div class="tab">喂养</div>
+              <div class="tab">发育</div>
+            </div>
+            <div class="range-row" style="margin-bottom:12px;">
+              <div class="seg active">相邻阶段</div>
+              <div class="seg">全部阶段</div>
+            </div>
+            <div class="text-compare">
+              <div class="text-stage">
+                <div class="text-stage-head"><span>4-6个月</span><span class="small-muted">来源页 6</span></div>
+                <div class="focus-desc">推荐睡眠 12-16 小时，白天 3-4 次小睡。</div>
+              </div>
+              <div class="text-stage">
+                <div class="text-stage-head"><span>7-9个月</span><span class="small-muted">来源页 8</span></div>
+                <div class="focus-desc">推荐睡眠 12-16 小时，夜间可能醒来 1-2 次。</div>
+              </div>
+              <div class="text-stage current">
+                <div class="text-stage-head"><span>10-12个月</span><span class="tag">当前宝宝</span></div>
+                <div class="focus-desc">推荐睡眠 12-16 小时，白天约 2 次小睡。</div>
+                <div class="source">来源页 11 · 个体差异较大，仅供参考。</div>
+              </div>
+              <div class="text-stage">
+                <div class="text-stage-head"><span>13-18个月</span><span class="small-muted">来源页 14</span></div>
+                <div class="focus-desc">可逐步过渡为白天 1 次小睡，保持稳定入睡节律。</div>
+              </div>
+            </div>
+            <button class="primary" style="width:100%; margin-top:14px;">查看10-12个月阶段详情</button>
+          </div>
+        </div>
+        <div class="caption">7. 文本建议对比：按阶段理解变化</div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
