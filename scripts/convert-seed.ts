@@ -2,9 +2,9 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
-const sql = readFileSync(resolve(root, 'child_growth_seed.sql'), 'utf8')
-const outDir = resolve(root, 'web/src/data/generated')
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const sql = readFileSync(resolve(root, 'docs/archive/child_growth_seed.sql'), 'utf8')
+const outDir = resolve(root, 'src/data/generated')
 
 type SqlValue = string | number | null
 
