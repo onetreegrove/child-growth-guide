@@ -2,6 +2,8 @@
 import AppHeader from '@/components/AppHeader.vue'
 import NoticeBar from '@/components/NoticeBar.vue'
 import { datasetMeta } from '@/services/growthService'
+
+const sourcePdfUrl = `${import.meta.env.BASE_URL}docs/0~3岁儿童生长发育及养育行为指导.pdf`
 </script>
 
 <template>
@@ -10,8 +12,16 @@ import { datasetMeta } from '@/services/growthService'
     <section class="card space-y-4">
       <div>
         <h2 class="text-lg font-extrabold">数据来源</h2>
-        <p class="mt-1 text-sm text-muted">{{ datasetMeta.dataset_name }}</p>
-        <p class="mt-1 text-sm text-muted">{{ datasetMeta.source_pdf }}</p>
+        <p class="mt-1 text-sm leading-relaxed text-muted">
+          内容整理自厦门市妇幼保健院《0~3岁儿童生长发育及养育行为指导》文档，仅用于育儿信息展示与参考。查看原文：
+          <a
+            class="text-link"
+            :href="sourcePdfUrl"
+            download
+          >
+            点我下载
+          </a>
+        </p>
       </div>
       <div>
         <h2 class="text-lg font-extrabold">当前数据版本</h2>

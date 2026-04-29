@@ -24,37 +24,11 @@ const dimension = computed(() => getDimension(dimensionKey.value))
 const isGrowth = computed(() => (growthDimensionKeys as readonly string[]).includes(dimensionKey.value))
 const growthMetrics = computed(() => getGrowthMetrics(dimensionKey.value, babyStore.matchedStage.id, range.value))
 const textItems = computed(() => getCompareTextItems(dimensionKey.value, babyStore.matchedStage.id, range.value))
-
-const siblingTabs = computed(() =>
-  isGrowth.value
-    ? [
-        ['weight', '体重'],
-        ['height', '身高'],
-        ['head_circumference', '头围'],
-      ]
-    : [
-        ['sleep', '睡眠'],
-        ['complementary_food', '喂养'],
-        ['motor', '发育'],
-      ],
-)
 </script>
 
 <template>
   <main class="page-shell">
     <AppHeader :title="`${dimension?.dimensionName ?? '维度'}对比`" action-text="说明" back @action="$router.push('/about/data')" />
-
-    <div class="mb-3 flex gap-2 overflow-hidden">
-      <RouterLink
-        v-for="[key, name] in siblingTabs"
-        :key="key"
-        class="grid h-9 min-w-20 place-items-center rounded-full border border-line bg-white px-4 text-sm font-extrabold text-muted"
-        :class="key === dimensionKey ? '!border-brand !bg-brand !text-white' : ''"
-        :to="`/compare/${key}`"
-      >
-        {{ name }}
-      </RouterLink>
-    </div>
 
     <div v-if="isGrowth" class="mb-3 grid grid-cols-3 gap-2">
       <button

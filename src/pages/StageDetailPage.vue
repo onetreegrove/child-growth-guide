@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import MetricCard from '@/components/MetricCard.vue'
@@ -14,9 +14,17 @@ const stageId = computed(() => String(route.params.stageId))
 const stage = computed(() => getStage(stageId.value) ?? babyStore.matchedStage)
 const metrics = computed(() => getCurrentStageMetrics(stage.value.id))
 const content = computed(() => getStageContent(stage.value.id))
+const detailDialog = ref<{ title: string; text: string } | null>(null)
 
 function getDevelopmentDomainName(domain: string): string {
   return getDimension(domain)?.dimensionName ?? domain
+}
+
+function openDetail(title: string, text: string | null | undefined): void {
+  detailDialog.value = {
+    title,
+    text: sanitizeMedicalCopy(text || '暂无详细说明。'),
+  }
 }
 </script>
 
@@ -42,32 +50,66 @@ function getDevelopmentDomainName(domain: string): string {
 
     <section class="card mt-4 space-y-3">
       <h2 class="text-lg font-extrabold">营养喂养</h2>
-      <RouterLink v-for="item in content.nutrition.slice(0, 3)" :key="item.id" class="soft-card block p-3" :to="`/compare/${item.category}`">
+      <button
+        v-for="item in content.nutrition.slice(0, 3)"
+        :key="item.id"
+        class="soft-card block w-full p-3 text-left"
+        type="button"
+        @click="openDetail(item.title, item.summary || item.content)"
+      >
         <strong class="block text-sm">{{ item.title }}</strong>
-        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.summary) }}</span>
-      </RouterLink>
+        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.summary || item.content) }}</span>
+      </button>
     </section>
 
     <section class="card mt-4 space-y-3">
       <h2 class="text-lg font-extrabold">发育表现</h2>
-      <RouterLink v-for="item in content.development" :key="item.id" class="soft-card block p-3" :to="`/compare/${item.domain}`">
+      <button
+        v-for="item in content.development"
+        :key="item.id"
+        class="soft-card block w-full p-3 text-left"
+        type="button"
+        @click="openDetail(getDevelopmentDomainName(item.domain), item.content)"
+      >
         <strong class="block text-sm">{{ getDevelopmentDomainName(item.domain) }}</strong>
         <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.content) }}</span>
-      </RouterLink>
+      </button>
     </section>
 
     <section class="card mt-4 space-y-3">
       <h2 class="text-lg font-extrabold">医疗保健</h2>
-      <div v-for="item in content.vaccines.slice(0, 3)" :key="`v-${item.id}`" class="soft-card p-3">
+      <button
+        v-for="item in content.vaccines.slice(0, 3)"
+        :key="`v-${item.id}`"
+        class="soft-card block w-full p-3 text-left"
+        type="button"
+        @click="openDetail(`${item.ageLabel} ${item.vaccineName}`, item.dose || item.note || '接种安排以当地接种单位为准')"
+      >
         <strong class="block text-sm">{{ item.ageLabel }} {{ item.vaccineName }}</strong>
         <span class="text-xs text-muted">{{ sanitizeMedicalCopy(item.dose || item.note || '接种安排以当地接种单位为准') }}</span>
-      </div>
-      <div v-for="item in content.checkups.slice(0, 1)" :key="`c-${item.id}`" class="soft-card p-3">
+      </button>
+      <button
+        v-for="item in content.checkups.slice(0, 1)"
+        :key="`c-${item.id}`"
+        class="soft-card block w-full p-3 text-left"
+        type="button"
+        @click="openDetail(`${item.ageLabel}体检`, item.purpose)"
+      >
         <strong class="block text-sm">{{ item.ageLabel }}体检</strong>
         <span class="line-clamp-2 text-xs text-muted">{{ sanitizeMedicalCopy(item.purpose) }}</span>
-      </div>
+      </button>
     </section>
 
     <NoticeBar class="mt-3" text="个体差异较大，若有持续担忧，请咨询专业医生。" />
+
+    <div v-if="detailDialog" class="fixed inset-0 z-50 grid place-items-center bg-black/40 px-4 py-5" role="dialog" aria-modal="true" @click.self="detailDialog = null">
+      <section class="max-h-[78vh] w-full max-w-[398px] overflow-y-auto rounded-lg bg-white p-4 shadow-hero">
+        <div class="flex items-start justify-between gap-3">
+          <h2 class="text-lg font-extrabold">{{ detailDialog.title }}</h2>
+          <button class="text-link shrink-0" type="button" @click="detailDialog = null">关闭</button>
+        </div>
+        <p class="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-muted">{{ detailDialog.text }}</p>
+      </section>
+    </div>
   </main>
 </template>
