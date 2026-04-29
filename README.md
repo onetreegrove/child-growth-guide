@@ -1,4 +1,4 @@
-# Child Growth H5 Frontend
+# Child Growth Guide
 
 本仓库仅保留 Web 前端工程。原 `web/` 目录内容已经提升到项目根目录，历史 PRD、UE、开发计划、验收报告、种子 SQL 和 UI 截图统一归档到 `docs/archive/`。
 
