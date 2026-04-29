@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Child Growth Guide icon</title>
+  <desc id="desc">A young sprout with growth marks on a calm teal rounded square.</desc>
+  <defs>
+    <linearGradient id="bg" x1="96" y1="40" x2="420" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#21b7aa" />
+      <stop offset="1" stop-color="#08766e" />
+    </linearGradient>
+    <linearGradient id="leaf" x1="170" y1="142" x2="330" y2="338" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fffb" />
+      <stop offset="1" stop-color="#d9f6ef" />
+    </linearGradient>
+    <filter id="softShadow" x="70" y="74" width="372" height="366" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#064d48" flood-opacity=".22" />
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <circle cx="398" cy="116" r="76" fill="#ffffff" opacity=".11" />
+  <circle cx="112" cy="390" r="104" fill="#ffffff" opacity=".08" />
+
+  <g filter="url(#softShadow)">
+    <path
+      fill="#ffffff"
+      opacity=".95"
+      d="M256 86c79 38 132 48 132 48v118c0 79-42 134-132 176-90-42-132-97-132-176V134s53-10 132-48Z"
+    />
+    <path
+      fill="#e3f5f2"
+      d="M256 111c60 28 101 37 101 37v98c0 62-31 107-101 141-70-34-101-79-101-141v-98s41-9 101-37Z"
+    />
+  </g>
+
+  <path
+    fill="none"
+    stroke="#08766e"
+    stroke-linecap="round"
+    stroke-width="26"
+    d="M256 340V214"
+  />
+  <path
+    fill="url(#leaf)"
+    d="M250 211c-47 3-91-25-109-68 52-12 103 8 126 53 4 8-7 15-17 15Z"
+  />
+  <path
+    fill="url(#leaf)"
+    d="M262 220c16-49 62-80 116-76-5 55-42 98-93 106-18 3-29-13-23-30Z"
+  />
+  <path
+    fill="none"
+    stroke="#0f8f85"
+    stroke-linecap="round"
+    stroke-width="13"
+    d="M173 152c34 4 61 21 83 56M343 160c-34 15-60 38-82 75"
+    opacity=".85"
+  />
+
+  <g fill="none" stroke="#0f8f85" stroke-linecap="round" stroke-width="14">
+    <path d="M166 316h180" opacity=".9" />
+    <path d="M172 276h42" opacity=".6" />
+    <path d="M172 238h30" opacity=".5" />
+    <path d="M172 200h42" opacity=".48" />
+  </g>
+
+  <circle cx="256" cy="354" r="26" fill="#0f8f85" />
+  <circle cx="256" cy="354" r="10" fill="#ffffff" opacity=".95" />
+</svg>
