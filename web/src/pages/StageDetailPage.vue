@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import MetricCard from '@/components/MetricCard.vue'
 import NoticeBar from '@/components/NoticeBar.vue'
-import { getCurrentStageMetrics, getStage, getStageContent } from '@/services/growthService'
+import { getCurrentStageMetrics, getDimension, getStage, getStageContent } from '@/services/growthService'
 import { sanitizeMedicalCopy } from '@/services/medicalCopy'
 import { useBabyProfileStore } from '@/stores/babyProfile'
 
@@ -14,6 +14,10 @@ const stageId = computed(() => String(route.params.stageId))
 const stage = computed(() => getStage(stageId.value) ?? babyStore.matchedStage)
 const metrics = computed(() => getCurrentStageMetrics(stage.value.id))
 const content = computed(() => getStageContent(stage.value.id))
+
+function getDevelopmentDomainName(domain: string): string {
+  return getDimension(domain)?.dimensionName ?? domain
+}
 </script>
 
 <template>
@@ -47,7 +51,7 @@ const content = computed(() => getStageContent(stage.value.id))
     <section class="card mt-4 space-y-3">
       <h2 class="text-lg font-extrabold">发育表现</h2>
       <RouterLink v-for="item in content.development" :key="item.id" class="soft-card block p-3" :to="`/compare/${item.domain}`">
-        <strong class="block text-sm">{{ item.domain }}</strong>
+        <strong class="block text-sm">{{ getDevelopmentDomainName(item.domain) }}</strong>
         <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.content) }}</span>
       </RouterLink>
     </section>

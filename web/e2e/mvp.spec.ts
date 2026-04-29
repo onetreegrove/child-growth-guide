@@ -42,6 +42,20 @@ test('navigates from home to stage detail and compare home', async ({ page }) =>
   await expect(page.getByText('生长指标')).toBeVisible()
 })
 
+test('shows Chinese development dimension names on stage detail', async ({ page }) => {
+  await page.goto('/stages/7_9m')
+
+  await expect(page.getByRole('link', { name: /动作发展/ })).toBeVisible()
+  await expect(page.getByRole('link', { name: /语言发展/ })).toBeVisible()
+  await expect(page.getByRole('link', { name: /认知发展/ })).toBeVisible()
+  await expect(page.getByRole('link', { name: /情感与社会性/ })).toBeVisible()
+
+  await expect(page.getByText('motor')).toHaveCount(0)
+  await expect(page.getByText('language')).toHaveCount(0)
+  await expect(page.getByText('cognition')).toHaveCount(0)
+  await expect(page.getByText('social_emotional')).toHaveCount(0)
+})
+
 test('switches gender and range in growth comparison', async ({ page }) => {
   await page.goto('/compare/weight')
 
