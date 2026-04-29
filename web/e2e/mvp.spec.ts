@@ -15,6 +15,18 @@ test('fills birth date and matches the 10-12 month stage', async ({ page }) => {
   await expect(page.getByText(/小树苗 · 10个月/)).toBeVisible()
 })
 
+test('centers the baby profile panel in the mobile viewport', async ({ page }) => {
+  await page.getByRole('button', { name: /出生日期 未填写/ }).click()
+
+  const panel = page.getByRole('heading', { name: '宝宝信息' }).locator('xpath=ancestor::section[1]')
+  const box = await panel.boundingBox()
+  const viewport = page.viewportSize()
+
+  expect(box).not.toBeNull()
+  expect(viewport).not.toBeNull()
+  expect(Math.abs(box!.x + box!.width / 2 - viewport!.width / 2)).toBeLessThanOrEqual(2)
+})
+
 test('navigates from home to stage detail and compare home', async ({ page }) => {
   await page.getByRole('button', { name: /出生日期 未填写/ }).click()
   await page.getByLabel('出生日期（必填）').fill('2025-06-20')

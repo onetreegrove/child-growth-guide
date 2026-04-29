@@ -44,7 +44,7 @@ function save(): void {
 </script>
 
 <template>
-  <div v-if="visible" class="fixed inset-0 z-40 grid place-items-end bg-black/30">
+  <div v-if="visible" class="fixed inset-0 z-40 flex items-end justify-center bg-black/30">
     <section class="w-full max-w-[430px] rounded-t-2xl bg-white p-4 shadow-hero">
       <header class="mb-4 flex items-center justify-between">
         <h2 class="text-xl font-extrabold">宝宝信息</h2>
