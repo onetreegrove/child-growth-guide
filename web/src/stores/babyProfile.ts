@@ -9,8 +9,8 @@ const storageKey = 'child-growth:baby-profile'
 
 const defaultProfile: BabyProfile = {
   nickname: '小树苗',
-  birthDate: '2025-06-20',
-  gender: 'male',
+  birthDate: '',
+  gender: 'all',
   persist: true,
   manualStageId: null,
 }

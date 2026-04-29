@@ -5,6 +5,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import MetricCard from '@/components/MetricCard.vue'
 import NoticeBar from '@/components/NoticeBar.vue'
 import { getCurrentStageMetrics, getStage, getStageContent } from '@/services/growthService'
+import { sanitizeMedicalCopy } from '@/services/medicalCopy'
 import { useBabyProfileStore } from '@/stores/babyProfile'
 
 const route = useRoute()
@@ -39,7 +40,7 @@ const content = computed(() => getStageContent(stage.value.id))
       <h2 class="text-lg font-extrabold">营养喂养</h2>
       <RouterLink v-for="item in content.nutrition.slice(0, 3)" :key="item.id" class="soft-card block p-3" :to="`/compare/${item.category}`">
         <strong class="block text-sm">{{ item.title }}</strong>
-        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ item.summary }}</span>
+        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.summary) }}</span>
       </RouterLink>
     </section>
 
@@ -47,7 +48,7 @@ const content = computed(() => getStageContent(stage.value.id))
       <h2 class="text-lg font-extrabold">发育表现</h2>
       <RouterLink v-for="item in content.development" :key="item.id" class="soft-card block p-3" :to="`/compare/${item.domain}`">
         <strong class="block text-sm">{{ item.domain }}</strong>
-        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ item.content }}</span>
+        <span class="line-clamp-2 text-xs leading-relaxed text-muted">{{ sanitizeMedicalCopy(item.content) }}</span>
       </RouterLink>
     </section>
 
@@ -55,11 +56,11 @@ const content = computed(() => getStageContent(stage.value.id))
       <h2 class="text-lg font-extrabold">医疗保健</h2>
       <div v-for="item in content.vaccines.slice(0, 3)" :key="`v-${item.id}`" class="soft-card p-3">
         <strong class="block text-sm">{{ item.ageLabel }} {{ item.vaccineName }}</strong>
-        <span class="text-xs text-muted">{{ item.dose || item.note || '接种安排以当地接种单位为准' }}</span>
+        <span class="text-xs text-muted">{{ sanitizeMedicalCopy(item.dose || item.note || '接种安排以当地接种单位为准') }}</span>
       </div>
       <div v-for="item in content.checkups.slice(0, 1)" :key="`c-${item.id}`" class="soft-card p-3">
         <strong class="block text-sm">{{ item.ageLabel }}体检</strong>
-        <span class="line-clamp-2 text-xs text-muted">{{ item.purpose }}</span>
+        <span class="line-clamp-2 text-xs text-muted">{{ sanitizeMedicalCopy(item.purpose) }}</span>
       </div>
     </section>
 

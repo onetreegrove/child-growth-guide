@@ -7,6 +7,7 @@ import developmentItemsRaw from '@/data/generated/developmentItems.json'
 import vaccineItemsRaw from '@/data/generated/vaccineItems.json'
 import checkupItemsRaw from '@/data/generated/checkupItems.json'
 import { getNearbyStages } from './stageMatcher'
+import { sanitizeMedicalCopy } from './medicalCopy'
 import type {
   AgeStage,
   CheckupItem,
@@ -120,7 +121,7 @@ export function getCompareTextItems(dimensionKey: string, currentStageId: string
         return {
           stage,
           title: getDimension(dimensionKey)?.dimensionName ?? '发育表现',
-          summary: item.content,
+          summary: sanitizeMedicalCopy(item.content),
           sourcePages: stage.sourcePages,
         }
       }
@@ -131,7 +132,9 @@ export function getCompareTextItems(dimensionKey: string, currentStageId: string
         return {
           stage,
           title: '疫苗接种',
-          summary: items.map((item) => `${item.ageLabel}：${item.vaccineName}${item.dose ? `（${item.dose}）` : ''}`).join('；'),
+          summary: sanitizeMedicalCopy(
+            items.map((item) => `${item.ageLabel}：${item.vaccineName}${item.dose ? `（${item.dose}）` : ''}`).join('；'),
+          ),
           sourcePages: stage.sourcePages,
         }
       }
@@ -142,7 +145,7 @@ export function getCompareTextItems(dimensionKey: string, currentStageId: string
         return {
           stage,
           title: `${item.ageLabel}体检`,
-          summary: item.purpose,
+          summary: sanitizeMedicalCopy(item.purpose),
           sourcePages: stage.sourcePages,
         }
       }
@@ -160,7 +163,7 @@ export function getCompareTextItems(dimensionKey: string, currentStageId: string
       return {
         stage,
         title: getDimension(dimensionKey)?.dimensionName ?? items[0].title,
-        summary: items.map((item) => item.summary ?? item.content).join('；'),
+        summary: sanitizeMedicalCopy(items.map((item) => item.summary ?? item.content).join('；')),
         sourcePages: stage.sourcePages,
       }
     })

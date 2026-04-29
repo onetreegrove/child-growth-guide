@@ -7,6 +7,7 @@ import CurrentStageCard from '@/components/CurrentStageCard.vue'
 import MetricCard from '@/components/MetricCard.vue'
 import NoticeBar from '@/components/NoticeBar.vue'
 import { getCurrentStageMetrics, getStageContent } from '@/services/growthService'
+import { sanitizeMedicalCopy } from '@/services/medicalCopy'
 import { useBabyProfileStore } from '@/stores/babyProfile'
 import type { BabyProfile } from '@/types/baby'
 
@@ -56,21 +57,21 @@ function saveProfile(profile: Partial<BabyProfile>): void {
           <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-soft text-xl">🥣</span>
           <span>
             <span class="block text-sm font-extrabold">营养喂养</span>
-            <span class="line-clamp-1 text-xs text-muted">{{ stageContent.nutrition[0].summary }}</span>
+            <span class="line-clamp-1 text-xs text-muted">{{ sanitizeMedicalCopy(stageContent.nutrition[0].summary) }}</span>
           </span>
         </RouterLink>
         <RouterLink v-if="stageContent.care[0]" class="soft-card flex items-center gap-3 p-3" to="/compare/sleep">
           <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-soft text-xl">☾</span>
           <span>
             <span class="block text-sm font-extrabold">睡眠节律</span>
-            <span class="line-clamp-1 text-xs text-muted">{{ stageContent.care[0].summary }}</span>
+            <span class="line-clamp-1 text-xs text-muted">{{ sanitizeMedicalCopy(stageContent.care[0].summary) }}</span>
           </span>
         </RouterLink>
         <RouterLink v-if="stageContent.development[0]" class="soft-card flex items-center gap-3 p-3" to="/compare/motor">
           <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-soft text-xl">🧸</span>
           <span>
             <span class="block text-sm font-extrabold">发育表现</span>
-            <span class="line-clamp-1 text-xs text-muted">{{ stageContent.development[0].content }}</span>
+            <span class="line-clamp-1 text-xs text-muted">{{ sanitizeMedicalCopy(stageContent.development[0].content) }}</span>
           </span>
         </RouterLink>
       </div>

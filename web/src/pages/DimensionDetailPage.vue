@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import NoticeBar from '@/components/NoticeBar.vue'
 import { formatMetricValue, getCompareTextItems, getDimension, getGrowthMetrics, growthDimensionKeys } from '@/services/growthService'
+import { sanitizeMedicalCopy } from '@/services/medicalCopy'
 import { useBabyProfileStore } from '@/stores/babyProfile'
 
 const route = useRoute()
@@ -22,11 +23,11 @@ const currentText = computed(() => getCompareTextItems(dimensionKey.value, babyS
       <div class="text-sm font-bold text-muted">当前阶段：{{ babyStore.matchedStage.displayName }}</div>
       <template v-if="isGrowth && currentMetric">
         <div class="mt-3 text-2xl font-black text-brand-dark">{{ formatMetricValue(currentMetric, babyStore.profile.gender) }} {{ currentMetric.unit }}</div>
-        <p class="mt-2 text-sm leading-relaxed text-muted">{{ currentMetric.sourceText ?? currentMetric.growthRate }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{{ sanitizeMedicalCopy(currentMetric.sourceText ?? currentMetric.growthRate) }}</p>
       </template>
       <template v-else-if="currentText">
         <h2 class="mt-3 text-xl font-extrabold">{{ currentText.title }}</h2>
-        <p class="mt-2 text-sm leading-relaxed text-muted">{{ currentText.summary }}</p>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{{ sanitizeMedicalCopy(currentText.summary) }}</p>
       </template>
       <RouterLink class="primary-btn mt-4 grid place-items-center" :to="`/compare/${dimensionKey}`">查看跨阶段对比</RouterLink>
     </section>
