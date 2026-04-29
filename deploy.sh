@@ -81,7 +81,7 @@ deploy() {
   fi
 
   tmp_archive="$(mktemp "/tmp/${APP_NAME}-${version}.XXXXXX.tar.gz")"
-  trap 'rm -f "${tmp_archive}"' EXIT
+  trap '[[ -n "${tmp_archive:-}" ]] && rm -f "${tmp_archive}"' EXIT
 
   download_asset "${version}" "${tmp_archive}"
 
